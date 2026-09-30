@@ -1,8 +1,20 @@
 package src.edu.volsu.pimm261.linear;
 
 public class RationalUtils {
+	
+	public static Integer rnd(Integer a, Integer b) {
+		return Math.round((float)(Math.random()*(b-a)+a));
+	}
+	
 	public static Rational getRandom(Integer a, Integer b, Integer den_digits) {
-		return null;
+		Integer l = Math.round((float)Math.pow(10, den_digits-1));
+		Integer r = l*10-1;
+		Integer q = rnd(l,r);
+		return new Rational(rnd(a*q, b*q),q);
+		
+		// a <= p/q <=b
+		// aq <= p <= bq
+		// 
 		// TODO Создать случайное рациональное число a <= q <= b,
 		// имеющее не более den_digits десятичных знаков в знаменателе
 	}
