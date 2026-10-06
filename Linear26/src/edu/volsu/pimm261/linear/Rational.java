@@ -45,8 +45,7 @@ public Integer gcd(int a,int b) {
 
 
 public float toFloat() {
-	// TODO Приведение числа к типу float 
-	return 0;
+	return (float) numerator / denominator;
 }
 
 

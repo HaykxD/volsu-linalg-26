@@ -64,8 +64,29 @@ public class RationalUtils {
 	}
 
 	public static Rational avg(Rational [] arr) {
-		return null; //TODO среднее арифметическое всех элементов массива
+	if (arr == null || arr.length == 0)
+		throw new IllegalArgumentException("empty array");
+
+	// сумма считается через BigInteger, чтобы не ловить переполнение int
+	BigInteger num = BigInteger.ZERO;
+	BigInteger den = BigInteger.ONE;
+	for (Rational r : arr) {
+		BigInteger rn = BigInteger.valueOf(r.getNumerator());
+		BigInteger rd = BigInteger.valueOf(r.getDenominator());
+		num = num.multiply(rd).add(rn.multiply(den));
+		den = den.multiply(rd);
+		BigInteger g = num.gcd(den);   // den > 0, значит g >= 1
+		num = num.divide(g);
+		den = den.divide(g);
 	}
+	// делим сумму на количество элементов
+	den = den.multiply(BigInteger.valueOf(arr.length));
+	BigInteger g = num.gcd(den);
+	num = num.divide(g);
+	den = den.divide(g);
+
+	return new Rational(num.intValueExact(), den.intValueExact());
+}
 
 	public static void sort(Rational [] arr) {
 		 //TODO сортировка массива на месте, не создавая нового массива
