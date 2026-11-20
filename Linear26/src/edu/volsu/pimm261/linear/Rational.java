@@ -35,7 +35,7 @@ public Rational() {
 }
 
 public String toString() {
-	return this.getNumerator()+((this.getDenominator() == 0)?"":"/"+this.getDenominator());
+	return this.getNumerator()+((this.getDenominator() == 1)?"":"/"+this.getDenominator());
 }
 
 public Integer gcd(int a,int b) {
@@ -55,7 +55,7 @@ public Rational(String s) {
 	// Татаров Никита парсинг строкового представления дроби или целого числа
 	String[] parts = s.split("/");
 	numerator = Integer.parseInt(parts[0].trim());
-	denominator = (parts.length > 1) ? Integer.parseInt(parts[1].trim()) : 1;
+	denominator = (parts.length > 1) ? Integer.parseInt(parts[1].trim()) : 1; // Меняем на 0 - reduce правильно работает
 	reduce();
 }
 
@@ -109,13 +109,12 @@ public Rational inverse() {
 }
 
 public Rational div(Rational that) {
-	// TODO частное
-	return null;
+	return this.mult(that.getInverse());
 }
 
 public int compareTo(Rational that) {
 	int d = this.diff(that).getNumerator();
-	return (d>0) ? 1 : (d==0) ? 0 : -1 ; // TODO Сравнение двух чисел
+	return (d>0) ? 1 : (d==0) ? 0 : -1 ;
 }
 
 @Override
@@ -125,8 +124,21 @@ public Object clone() {
 
 
 public boolean isZero() {
-	// TODO проверка на равенство нулю
-	return false; // TODO
+	return this.getNumerator() == 0;
+}
+
+
+
+@Override
+public Rational getZero() {
+	return new Rational(0);
+}
+
+
+
+@Override
+public Rational getUnit() {
+	return new Rational(1);
 }
 
 }

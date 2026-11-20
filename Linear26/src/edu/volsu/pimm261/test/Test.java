@@ -8,7 +8,8 @@ import src.edu.volsu.pimm261.linear.RationalUtils;
 public class Test {
 
 	public static void main (String[] args) {
-		t5();			
+		//t6();	
+		t7();
 	}
 	public static void t1() {
 		Rational r = new Rational(2);
@@ -43,4 +44,13 @@ public class Test {
 		System.out.println(arr[0]+", "+arr[1]+", "+arr[2]);
 	}
 	
+	public static void t6() {
+		Rational s1 = new Rational("1/5");
+		Rational s2 = new Rational("15");
+		Rational s3 = new Rational("-4/12");
+		System.out.println(s1+"\n"+ s2 +"\n"+ s3);
+	}
+	public static void t7() {
+				System.out.println(new Rational(10).isZero());
+	}
 }

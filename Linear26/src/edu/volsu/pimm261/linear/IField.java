@@ -5,6 +5,8 @@ public interface IField<T> {
 	T getOpposite();
 	T mult(T that);
 	T inverse();
+	T getZero();
+	T getUnit();
 	boolean isZero();
 	default T getInverse() {
 		if (!isZero()) return inverse();
@@ -18,3 +20,5 @@ public interface IField<T> {
 		return this.mult(that.getInverse());
 	}
 }
+
+

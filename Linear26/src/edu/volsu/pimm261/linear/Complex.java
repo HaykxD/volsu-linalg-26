@@ -35,5 +35,15 @@ public boolean isZero() {
 	// TODO Auto-generated method stub
 	return false;
 }
+@Override
+public Complex getZero() {
+	// TODO Auto-generated method stub
+	return null;
+}
+@Override
+public Complex getUnit() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }
