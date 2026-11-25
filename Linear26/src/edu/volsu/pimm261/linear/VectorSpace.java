@@ -144,6 +144,17 @@ public class VectorSpace<T extends IField<T>> {
 		}
 		return result;
 	}
+
+	/**
+ * Проверяет, является ли вектор нулевым (все координаты равны нулю) Памбухчян */
+public boolean isZero() {
+	for (int i = 0; i < dimension; i++) {
+		if (!this.getAt(i).isZero()) {
+			return false;
+		}
+	}
+	return true;
+}
 		
 	//++++++++++++++TODO длина вектора над линейно упорядоченным полем (Суровкин Никита)
 			/**
