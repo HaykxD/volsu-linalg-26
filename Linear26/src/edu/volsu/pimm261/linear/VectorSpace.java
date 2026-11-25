@@ -180,7 +180,13 @@ public class VectorSpace<T extends IField<T>> {
 
 				return result;
 			}
-
+//TODO Проверить, все ли координаты вектора неотрицательны, Татаров Никита
+			public <U extends T & Comparable<T>> boolean isNonNegative() {
+	for (T c : components) {
+		if (((U) c).compareTo(c.getZero()) < 0) return false;
+	}
+	return true;
+}
 			/**
 			 * Евклидова длина вектора.
 			 *
