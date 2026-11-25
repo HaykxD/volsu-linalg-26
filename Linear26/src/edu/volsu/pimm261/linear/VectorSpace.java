@@ -220,7 +220,32 @@ public class VectorSpace<T extends IField<T>> {
 	
 	
 		//TODO клонирование
-		//TODO Найти первую ненулевую координату вектора, начиная с номера i
+	
+	
+	//TODO Найти первую ненулевую координату вектора, начиная с номера i
+	//Горох Алексей
+	public Integer firstNotZeroCoordSinceNumberI(int i){
+		if (i < 1) i = 1;                      // координаты нумеруются с 1
+		for (int k = i - 1; k < dimension; k++) {  // k — индекс с 0
+			T comp = components.get(k);
+			if (!comp.equals(comp.getZero())) {
+				return k + 1;                  // вернуть номер с 1
+			}
+		}
+		return -1;
+	}
+	// Вариант Б, где возвращаем не позицию, А само ненулевое значение
+	public T firstNotZeroCoordValueSinceNumberI(int i) {
+		if (i < 1) i = 1;
+		for (int k = i - 1; k < dimension; k++) {
+			T comp = components.get(k);
+			if (!comp.equals(comp.getZero())) {
+				return comp;
+			}
+		}
+		return null;
+	}
+	
 		//TODO Проверка двух векторов на навенство
 		//TODO Получить из данного вектора новый вектор с переставленными i-й и j-й координатами
 		//TODO Проверить, все ли координаты вектора неотрицательны
